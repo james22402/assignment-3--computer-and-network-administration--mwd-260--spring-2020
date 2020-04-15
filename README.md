@@ -26,7 +26,7 @@ cp -R $1/. $2
 ```
 
 ### Question 2
-Write a script that checks whether a program exists on your machine. If it doesn’t, it should try to fetch the program via `apt install`. (_`12` pts_)
+Write a script that checks whether a program exists on your machine. This program will be passed to your script via an argument. If it doesn’t, it should try to fetch the program via `apt install`. (_`12` pts_)
 
 ```bash
 echo "Searching for package $1 locally..."
@@ -73,6 +73,7 @@ find . -type d -empty -delete
 Write a script that reports every file name in a folder as two items: the filename and its extension. Each item should appear on a new line. (_`12` pts_)
 
 ```bash
+find . -maxdepth 1 -type f -printf %f\\n | sed -E 's/^([^.]*).([^.]*)$/\1\n\2/g'
 ```
 
 ### Question 7
