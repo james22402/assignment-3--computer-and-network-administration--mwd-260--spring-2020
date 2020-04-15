@@ -29,6 +29,23 @@ cp -R $1/. $2
 Write a script that checks whether a program exists on your machine. If it doesn’t, it should try to fetch the program via `apt install`. (_`12` pts_)
 
 ```bash
+echo "Searching for package $1 locally..."
+SEARCH="$(apt list --installed | grep $1)"
+if [ -z "$SEARCH" ]; then
+  echo "Package not found locally would you like to try installing it? (Y/n)"
+  read SELECTION
+  if [ "$SELECTION" = "y" ] || [ -z "$SELECTION" ]; then
+    echo "Searching for package..."
+    SEARCH="$(apt search $1)"
+    if [ -z "$SEARCH" ]; then
+      echo "Package $1 not found. Please try again."
+      exit 1
+    fi
+    echo "Attempting to auto install package using given name: $1"
+    sudo apt install $1 -y
+    echo "Package sucessfully installed."
+  fi
+fi
 ```
 
 ### Question 3
