@@ -59,12 +59,14 @@ touch "$(pwd | grep -Po '[^/]*?$').txt"
 Write a command that will recursively remove files with the `.thumbs` extension from the current folder. (_`12` pts_)
 
 ```bash
+rm *.thumbs
 ```
 
 ### Question 5
 Write a command that will recursively remove empty folders from the current folder. (_`12` pts_)
 
 ```bash
+find . -type d -empty -delete
 ```
 
 ### Question 6
