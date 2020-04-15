@@ -52,6 +52,7 @@ fi
 Write a command that will create an empty file with a `.txt` extension named after the current folder. (_`12` pts_)
 
 ```bash
+touch "$(pwd | grep -Po '[^/]*?$').txt"
 ```
 
 ### Question 4
